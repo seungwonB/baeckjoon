@@ -4,32 +4,28 @@
 
 using namespace std;
 
+int func(int n) {
+	int result = n;
+	while(true) {
+		if(n == 0) break;
+		result = result + n % 10;
+		n = n / 10;
+	}
+	return result;
+}
+
+bool array[10001];
 
 int main() {
-	int cnt = 0;
-	int array[1000];
-	int num;
-	cin >> num;
-	
-	if (num < 100) {
-		for(int i = 1; i <= num; i++) {
-			cnt++;
+	for(int i=1;i<=10000;i++){
+		int num = func(i);
+		if (num <= 10001) {
+			array[num] = true;
 		}
-	} else {
-		cnt = 99;
-		for(int i = 100; i <= num; i++){
-			int hundred = i / 100;
-			int ten = (i % 100) / 10;
-			int one = (i % 100) % 10;
-			
-			if (hundred - ten == ten - one)
-				cnt++;	
-			
-		}
-			
 	}
 	
-	cout << cnt;
-	
-
-}
+	for(int i=1;i<=10000;i++) {
+		if (!array[i])
+			cout << i << "\n";
+	}
+} 
