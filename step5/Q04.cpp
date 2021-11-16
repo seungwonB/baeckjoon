@@ -3,15 +3,13 @@
 using namespace std;
 
 int main() {
-	int arr[100] = { 0 };
-	int max;
-	for(int i=1;i<=30;i++) {
-		arr[i] = i + (i/10) + (i%10);
+	int num, cnt = 0;
+	int array[42] = { 0 };
+	
+	for(int i=0;i<10;i++) {
+		cin >> num;
+		if(!array[num%42]++) cnt++;
 	}
-	max = arr[0];
-	for(int i=1;i<=30;i++){
-		if(max < arr[i])
-			max = arr[i];
-	}
-	cout << max;
-} 
+	cout << cnt;
+	
+}
