@@ -1,14 +1,17 @@
 #include <iostream>
-//자연수 N이 주어졌을 때, N부터 1까지 한 줄에 하나씩 출력하는 프로그램을 작성하시오.
 
 using namespace std;
-
+//두 정수 A와 B를 입력받은 다음, A+B를 출력하는 프로그램을 작성하시오.
 int main() {
 	int num;
+	int x, y;
 	cin >> num;
-	
-	for(int i=num; i>=1; i--) {
-		cout << i << "\n";
+
+	for(int i=0;i<num;i++){
+		cin >> x >> y;
+		
+		cout << "Case #" << i+1 << ": " << x + y << "\n";
+		
 	}
 	
 }
