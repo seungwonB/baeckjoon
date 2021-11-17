@@ -22,7 +22,7 @@ int main() {
 	num1 = atoi(s1.c_str()); // 문자열을 숫자로 
 	num2 = atoi(s2.c_str());
 	
-	res = (num1 > num2) ? num1 : num2;
+	res = (num1 > num2) ? num1 : num2; // 두 수 비교 
 	cout << res;
 }
 
