@@ -23,6 +23,6 @@ int main() {
 	num2 = atoi(s2.c_str());
 	
 	res = (num1 > num2) ? num1 : num2; // 두 수 비교 
-	cout << res;
+	cout << res; // 결과 출력 
 }
 
