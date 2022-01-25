@@ -13,7 +13,7 @@ int main() {
 	int i = coin - 1;
 
 	while (user != sum) {
-		if (coins[i] <= sum && (user+coins[i]) <= sum) {
+		if ((user + coins[i]) <= sum) {
 			user += coins[i];
 			cnt++;
 			continue;
