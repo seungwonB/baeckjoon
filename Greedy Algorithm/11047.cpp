@@ -16,7 +16,6 @@ int main() {
 		if ((user + coins[i]) <= sum) {
 			user += coins[i];
 			cnt++;
-			continue;
 		} else
 			i--;
 	}
