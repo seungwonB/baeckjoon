@@ -1,7 +1,7 @@
 #include <cstdio>
 
 int main() {	
-	// Á¡È­½Ä
+	// ì í™”ì‹
 	int zero[41] = { 1, 0, };
 	int one[41] = { 0, 1, };
 	int test_case, n;
