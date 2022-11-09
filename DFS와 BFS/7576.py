@@ -1,56 +1,51 @@
 from collections import deque
 
 def solution():
-    map_size = int(input()) # 지도의 크기
-    graph = []
     answer = []
-    for i in range(map_size):
-        graph.append(list(map(int, input())))
+    M, N = map(int, input().split()) # 가로, 세로
+    matrix = [list(map(int, input().split())) for _ in range(N)] # 토마토 받아서 넣기
 
-    visited = [[False for j in range(map_size)] for i in range(map_size)]
+    start_position = deque() # 토마토가 있는 곳
+    res = 0
 
-    for i in range(map_size):
-        for j in range(map_size):
-            if graph[i][j] == 1:
-                answer.append(BFS(map_size, graph, i, j, visited))
+    for i in range(N):
+        for j in range(M):
+            if matrix[i][j] == 1:
+                start_position.append([i, j])
 
-    print(len(answer))
-    answer.sort()
-    for i in answer:
-        print(i)
+    BFS(N, M, matrix, start_position)
 
-def BFS(N, graph, i, j, visited):
+    for i in matrix:
+        for j in i:
+            if j == 0:
+                print(-1)
+                exit(0)
+        res = max(res, max(i))
+        
+    print(res - 1)
+
+def BFS(y, x, graph, start_position:deque):
     # 큐 생성
-    queue = deque()
+    queue = start_position
     # 동 서 남 북
     dx = [1, -1, 0, 0]
     dy = [0, 0, 1, -1]
-    # 시작 노드 큐에 삽입
-    queue.append((i, j))
-    cnt_apart = 1
     # 큐가 빌 떄 까지
     while queue:
         # 현재 y, x 큐에서 꺼냄
         cur_y, cur_x = queue.popleft()
         # 방문 처리
-        visited[i][j] = True
-
         for k in range(4):
             # 동 서 남 북 으로 이동
             next_y = cur_y + dy[k]
             next_x = cur_x + dx[k]
 
             # 밖으로 나가지 않고 N,M보다 크지 않을 때
-            if next_y >= 0 and next_x >= 0 and next_y < N and next_x < N:
-                # 해당 값이 0이 아니고 방문하지 않았을 때
-                if graph[next_y][next_x] != 0 and visited[next_y][next_x] == 0:
-                    # 방문 처리
-                    visited[next_y][next_x] = True
+            if next_y >= 0 and next_x >= 0 and next_y < y and next_x < x:
+                # 해당 값이 0일 때
+                if graph[next_y][next_x] == 0:
                     # 인접한 노드는 가중치 증가
-                    graph[next_y][next_x] = 0
+                    graph[next_y][next_x] = graph[cur_y][cur_x] + 1
                     queue.append((next_y, next_x))
-                    cnt_apart += 1
-
-    return cnt_apart
 
 solution()
